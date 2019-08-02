@@ -56,12 +56,12 @@ pipeline {
         }
         stage('smokeTests') {
             when {
-                branch '!master'
+                branch 'master'
             }
             steps {
                 script {
                     sleep (time: 10)
-                    def response = httpRequest (url: "http://$KUBE_MASTER_IP:8080/", timeout: 30)
+                    def response = httpRequest (url: "http://$KUBE_MASTER_IP:8081/", timeout: 30)
                     if (response.status != 200) {
                         error("Smoke test against canary deployment failed.")
                     }                    
