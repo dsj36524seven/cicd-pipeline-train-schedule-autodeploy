@@ -56,7 +56,7 @@ pipeline {
         }
         stage('smokeTests') {
             when {
-                branch 'master'
+                branch '!master'
             }
             steps {
                 script {
